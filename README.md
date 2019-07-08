@@ -11,3 +11,5 @@ The addon provides REST endpoints to third-party applications, system services
 for integration with other Confluence plugins, CQL function to filter using
 JSON data and other features described below. Please take a look at a 5-minute
 introduction [video](https://youtu.be/Yq9is8wHqcU).
+
+Please check [product page](https://www.mesilat.com/pages/confluence/data-share/)
