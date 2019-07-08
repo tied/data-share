@@ -1,0 +1,79 @@
+{namespace Mesilat.DataShare.Templates}
+
+/**
+ * Define Markup Modal Dialog
+ */
+{template .defineMarkup}
+<section id="data-share-modal" class="aui-dialog2 aui-dialog2-medium" data-aui-remove-on-hide="true" role="dialog">
+    <header class="aui-dialog2-header">
+        <h2 class="aui-dialog2-header-main">Data Share</h2>
+        <a class="aui-dialog2-header-close">
+            <span class="aui-icon aui-icon-small aui-iconfont-close-dialog">Close</span>
+        </a>
+    </header>
+
+    <div class="aui-dialog2-content">
+        <form class="aui">
+            <div class="aui-group">
+                <div class="aui-item" style="width:100px;">
+                    <p>Table element</p>
+                    <div class="radio">
+                        <input class="radio" type="radio" name="table-element" id="table-element-table">
+                        <label for="table-element-table">Table</label>
+                    </div>
+                    <div class="radio">
+                        <input class="radio" type="radio" name="table-element" id="table-element-tr">
+                        <label for="table-element-tr">Row</label>
+                    </div>
+                    <div class="radio">
+                        <input class="radio" type="radio" name="table-element" id="table-element-td" checked="checked">
+                        <label for="table-element-td">Cell</label>
+                    </div>
+                </div>
+                <div class="aui-item">
+                    <p style="padding-left:145px;">Element classes</p>
+                    <div class="field-group">
+                        <label for="dsattr-name">dsattr-</label>
+                        <input class="text long-field" type="text" id="dsattr-name" placeholder="attribute name">
+                    </div>
+                    <div class="field-group">
+                        <label for="dsattrtype-type">dsattrtype-</label>
+                        <input class="text long-field" type="text" id="dsattrtype-type" placeholder="attribute type">
+                    </div>
+                    <div class="field-group">
+                        <input class="checkbox" type="checkbox" id="dsobject">
+                        <label for="dsobject">dsobject</label>
+                    </div>
+                    <div class="field-group">
+                        <label for="dsobjtype-type">dsobjtype-</label>
+                        <input class="text long-field" type="text" id="dsobjtype-type" placeholder="object type">
+                    </div>
+                    <div class="field-group">
+                        <textarea class="textarea long-field" id="other-classes" placeholder="extra classes go here..."></textarea>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <footer class="aui-dialog2-footer">
+        <div class="aui-dialog2-footer-actions">
+            <button class="aui-button aui-button-primary">OK</button>
+            <button class="aui-button aui-button-link">Close</button>
+        </div>
+        <div class="aui-dialog2-footer-hint">Data Share markup is defined with HTML classes</div>
+    </footer>
+</section>
+{/template}
+
+
+/**
+ * Table Toolbar Button
+ */
+{template .toolbarButton}
+<div class="aui-buttons">
+    <button type="button" class="aui-button aui-button-subtle" data-tooltip="Data Share">
+        <span class="icon aui-icon aui-icon-small aui-iconfont-macro-code data-share-context-button">Data Share</span>
+    </button>
+</div>
+{/template}

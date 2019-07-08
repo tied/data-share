@@ -1,0 +1,16 @@
+{namespace Mesilat.DataShare.Templates}
+
+/**
+ * Notification template
+ * @param notifications
+ * @param status
+ */
+{template .notify}
+<div class="com-mesilat-datashare-{$status}">
+<ul>
+    {foreach $notification in $notifications}
+        <li>{$notification}</li>
+    {/foreach}
+</ul>
+</div>
+{/template}

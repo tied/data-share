@@ -1,0 +1,97 @@
+{namespace Mesilat.DataShare.Templates}
+
+/**
+ * DataShare pages report macro
+ * @param cql
+ * @param columns
+ * @param titles
+ */
+{template .pagesReport}
+<div class="com-mesilat-datashare-pages-report"
+    data-cql="{$cql}"
+    data-columns="{$columns}"
+    data-titles="{$titles}"
+>
+    <span class="aui-icon aui-icon-wait"></span> Loading...
+</div>
+{/template}
+
+
+/**
+ * DataShare macro error message
+ * @param text
+ */
+{template .errorBody}
+<p>{$text}</p>
+{/template}
+
+
+/**
+ * DataShare pages report table
+ * @param data
+ * @param columns
+ * @param titles
+ */
+{template .reportTable}
+<table class="confluenceTable">
+<thead>
+<tr>
+    {foreach $column in $columns}
+        <th class="confluenceTh">
+        {if isNonnull($titles[$column])}
+            {$titles[$column]}
+        {else}
+            {$column}
+        {/if}
+        </th>
+    {/foreach}
+</tr>
+</thead>
+<tbody>
+    {foreach $rec in $data}
+    <tr>
+        {foreach $column in $columns}
+        <td class="confluenceTd">
+            {if $column == 'page'}
+                <a href="{contextPath()}/pages/viewpage.action?pageId={$rec.id}">{$rec.title}</a>
+            {elseif isNonnull($rec.data[$column])}
+                {foreach $_rec in $rec.data[$column]}
+                <p>
+                    {call .reportValue}
+                        {param value: $_rec /}
+                    {/call}
+                </p>
+                {/foreach}
+            {/if}
+        </td>
+        {/foreach}
+    </tr>
+    {/foreach}
+</tbody>
+</table>
+{/template}
+
+
+
+
+/**
+ * DataShare pages report value
+ * @param value
+ */
+{template .reportValue}
+{if $value._type == 'page'}
+    <a href="{contextPath()}/pages/viewpage.action?pageId={$value.id}">{$value.title}</a>
+{elseif $value._type == 'user'}
+    {call Confluence.Templates.User.usernameLink}
+        {param username: $value.name /}
+        {param fullName: $value.fullName /}
+        {param canView: false /}
+    {/call}
+{elseif $value._type == 'link'}
+    <a href="{$value.href}">{$value.href}</a>
+{elseif $value._type == 'date'}
+    <time datetime="{$value.date}">{$value.date}</time>
+{else}
+    {$value}
+{/if}
+{/template}
